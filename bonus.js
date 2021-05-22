@@ -8,7 +8,11 @@ const channels = require("./channels.json");
  * BONUS: use iteration method `.reduce()`
  ****************************************************************/
 function totalVideosDuration(channel) {
-  // Your code here
+  // Your code here 
+  let sum = 0
+channel.videos.forEach((video) => 
+ (sum += video.duration))
+ return sum;
 }
 
 /**************************************************************
@@ -21,8 +25,27 @@ function totalVideosDuration(channel) {
  ****************************************************************/
 function channelWithMostContent(channels) {
   // Your code here
-}
+ const most = channels.sort(function (a, b){
+  var durationA = totalVideosDuration(a); 
+  var durationB = totalVideosDuration(b); 
+   return durationA - durationB ;
+ });
+  return most.pop();
 
+  
+//const y = channels.videos.sort((video) => (video.duration , totalVideosDuration(channel)));
+//return y
+
+
+  //let temp = totalVideosDuration(channels);
+  //let answer = channels[0];
+  //channels.forEach((channel) => {
+ //if ( totalVideosDuration (channel) > temp)
+  //answer = channel;
+  //})
+  //return answer;
+}
+//console.log(channelWithMostContent(channels))
 /**************************************************************
  * longestChannelName(channels):
  * - receives an array of channel objects
@@ -32,6 +55,21 @@ function channelWithMostContent(channels) {
  ****************************************************************/
 function longestChannelName(channels) {
   // Your code here
+  const longer = channels.sort(function(channela, channelb) {
+    var nameA = channela.name; 
+    var nameB = channelb.name; 
+    if (nameA > nameB) {
+      return -1;
+    }
+    if (nameA < nameB) {
+      return 1;
+    }
+  
+    // names must be equal
+    return 0;
+  });
+  //console.log(longer)
+  return longer.pop()
 }
 
 // Check your answers by running this file and comparing what it logs
